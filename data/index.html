@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wetterstation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Wetterstation | Dashboard</h1>
+    <main class="main-wrapper">
+      <div class="card-container">
+        <div class="card">
+          <div class="card-header">💧 Luftfeuchtigkeit:</div>
+          <div class="card-content" id="humidity">0%</div>
+        </div>
+        <div class="card">
+          <div class="card-header">🌡️ Temperatur:</div>
+          <div class="card-content" id="temperature">0C</div>
+        </div>
+        <div class="card">
+          <div class="card-header">🎤	Microphone:</div>
+          <div class="card-content" id="microphone">0</div>
+        </div>
+      </div>
+
+      <div class="bottom-sections">
+        <form class="settings-container" onsubmit="saveConfig(event)">
+          <h2>Konfiguration</h2>
+          <div class="card-content">
+            <div class="interval-options">
+              <label for="interval">Messvorgang alle (Sekunden): </label>
+              <input type="number" id="interval" name="interval" min="1" />
+            </div>
+
+            <h3>Status LED</h3>
+
+            <div class="on-off">
+              <label>
+                <input type="radio" name="led" value="true" id="radio-on" />
+                An
+              </label>
+              <label>
+                <input type="radio" name="led" value="false" id="radio-off" />
+                Aus
+              </label>
+            </div>
+
+            <h3>Farben der Status</h3>
+
+            <div class="status">
+              <label for="color-1">Standby:</label>
+              <input type="color" id="color-1" name="standby" />
+            </div>
+
+            <div class="status">
+              <label for="color-2">Zu hohe Luftfeuchtigkeit:</label>
+              <input type="color" id="color-2" name="highHumidity" />
+            </div>
+
+            <div class="status">
+              <label for="color-3">Zu hohe Temperatur:</label>
+              <input type="color" id="color-3" name="highTemperature" />
+            </div>
+
+            <div class="status">
+              <label for="color-4">Messung im Gange:</label>
+              <input type="color" id="color-4" name="measurementInProcess" />
+            </div>
+
+            <div class="status">
+              <label for="color-5">Kein WLAN:</label>
+              <input type="color" id="color-5" name="noWlan" />
+            </div>
+          </div>
+        </form>
+
+        <div class="graph-container">
+          <h2>Verlauf</h2>
+          <div class="graph-box">
+            <canvas id="graph"> </canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

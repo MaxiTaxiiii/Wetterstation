@@ -10,25 +10,41 @@ Im Rahmen dieses Projekts wurde ein einfaches Messsystem entwickelt, das Umweltd
 Im Projekt wurde eine Wetterstation umgesetzt, die Messwerte wie Temperatur, Luftfeuchtigkeit und Sensordaten erfasst und auf verschiedene Weise zugänglich macht. Die Daten werden dabei lokal angezeigt, per API bereitgestellt, in einer Datenbank gespeichert und über ein Webinterface grafisch dargestellt.
 ## 3. Theorie                                                                        
 Für die Umsetzung der Wetterstation waren mehrere technische Kompetenzen nötig, die im Unterricht oder im Selbststudium erarbeitet wurden:
-ESP32
+
+**ESP32**
+
 Grundkenntnisse über den Mikrocontroller waren erforderlich - z. B. Pinzuweisungen, Spannungslimits, Initialisierung von Sensoren, Nutzung der GPIOs und die Integration von Bibliotheken für Sensoren und das Display.
-Netzwerk
+
+**Netzwerk**
+
 Der ESP32 wurde über WLAN mit dem Internet verbunden. Es wurden HTTP-GET/POST-Anfragen verwendet, um Messwerte an einen Webserver zu senden oder Zeitdaten über NTP zu holen. Kenntnisse über IP-Adressen, Ports und Protokolle waren dafür notwendig.
-Web/API
+
+**Web/API**
+
 Um die Daten online verfügbar zu machen, wurden APIs genutzt - z. B. die Blynk-Cloud oder Discord-Webhooks. Die Kommunikation lief dabei über das JSON-Format, welches geparst und erstellt werden musste.
-Dateisystem (LittleFS)
+
+**Dateisystem (LittleFS)**
+
 Um Konfigurationen dauerhaft zu speichern (z. B. WLAN-Zugangsdaten oder Blynk-Token), wurde das interne Dateisystem des ESP32 verwendet. Mit LittleFS konnten Dateien gelesen und geschrieben werden.
 
-Display & LEDs
+**Display & LEDs**
+
 Messdaten wurden am OLED angezeigt. Zusätzlich wurden Status-LEDs (RGB) zur Visualisierung von Problemen oder Warnungen verwendet - z. B. rote LED bei Überhitzung oder blinkend blau bei WLAN-Ausfall.
-Debugging
+
+**Debugging**
+
 Die serielle Konsole war ein wichtiges Werkzeug, um Fehler zu erkennen (z. B. keine Verbindung zum Server, fehlerhafte Sensoren). Auch LED-Farben halfen beim schnellen Erkennen von Problemen ohne angeschlossenen PC.
+
 ## 4.   Arbeitsschritt                                                                    
 1. **Benötigte Hardware**
+
+Breadboard
 
 ESP32 Development Board
 
 DHT11 Temperatursensor (mit Feuchtigkeitssensor)
+
+B03_1 Mikrofon
 
 OLED Display (I2C, z.B. 128x64 Pixel)
 
@@ -62,7 +78,7 @@ Für LittleFS muss das Dateisystem-Plugin installiert sein (Arduino IDE: Sketch 
 
 Einen Discord-Server mit Webhook-URL
 
-MySQL-Datenbank mit HTTP-Endpoint zum Speichern der Messwerte (Eigenes Backend oder fertiger Webservice)
+SQL-Datenbank mit HTTP-Endpoint zum Speichern der Messwerte (Eigenes Backend oder fertiger Webservice)
 
 3. **Verdrahtung**
 
@@ -72,9 +88,9 @@ Bauteil	ESP32 Pin
 
 DHT11 Data is GPIO 2
 
-SDA is GPIO 5
+SDA is GPIO 4
 
-SCL is GPIO 4
+SCL is GPIO 5
 
 DHT11 VCC	3.3V oder 5V (je nach DHT11)
 
@@ -126,7 +142,6 @@ Wähle dein Heim-WLAN aus, gib das Passwort ein.
 
 ESP32 verbindet sich mit dem WLAN und startet neu.
 
-
 8. **Funktionsweise**
 
 Sensorwerte lesen: DHT11 misst Temperatur und Luftfeuchtigkeit.
@@ -144,6 +159,7 @@ Discord-Webhook: Schickt bei bestimmten Ereignissen (z.B. Start, Fehler) eine Na
 Konfiguration: Werte aus config.txt werden beim Start geladen, um Token und Serverdaten bereitzustellen.
 
 ### Bilder und Schaltungen
+<img src="Wetterstation_img/Wetterstation_Schaltplan.jpg" alt="Wetterstation" width="400" />
 <img src="Wetterstation_img/Wetterstaion_Schaltung.jpg" alt="Wetterstation" width="400" />
 <img src="Wetterstation_img/Wetterstaion_Schaltung2.jpg" alt="Wetterstation" width="400" />
 

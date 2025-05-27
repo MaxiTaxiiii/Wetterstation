@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
     document.getElementById('color-5').value = data.noWlan;
 
     fetchWeatherData();
-    setInterval(fetchWeatherData, 30000);
+    setInterval(fetchWeatherData, 3000);
   } catch (error) {
     console.error('Error: ' + error);
   }
@@ -144,6 +144,17 @@ const chart = new Chart(ctx, {
     scales: {
       x: {
         type: 'time',
+        time: {
+          unit: 'minute',
+          tooltipFormat: 'MMM D, h:mm:ss a',
+          displayFormats: {
+            minute: 'h:mm a',
+          },
+        },
+        title: {
+          display: true,
+          text: 'Timestamp',
+        },
       },
       y: {
         title: {

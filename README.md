@@ -25,70 +25,122 @@ Debugging
 Die serielle Konsole war ein wichtiges Werkzeug, um Fehler zu erkennen (z. B. keine Verbindung zum Server, fehlerhafte Sensoren). Auch LED-Farben halfen beim schnellen Erkennen von Problemen ohne angeschlossenen PC.
 ## 4.   Arbeitsschritt                                                                    
 1. Benötigte Hardware
+
 ESP32 Development Board
+
 DHT11 Temperatursensor (mit Feuchtigkeitssensor)
+
 OLED Display (I2C, z.B. 128x64 Pixel)
+
 Verbindungskabel (Jumper)
+
 USB-Kabel zum Programmieren des ESP32
 
 2. Benötigte Software und Bibliotheken
+
 Arduino IDE oder eine andere Entwicklungsumgebung für ESP32
+
 ESP32 Board Support in Arduino IDE installiert
+
 Folgende Arduino-Bibliotheken:
+
 DHT sensor library von Adafruit
+
 Adafruit Unified Sensor
+
 U8g2 (für OLED Display)
+
 NeoPixelBus (für NeoPixel LED)
+
 WiFiManager (für WLAN-Konfiguration)
+
 Blynk (für die Cloud-Kommunikation)
+
 HTTPClient (für HTTP-Requests)
-Für LittleFS muss das Dateisystem-Plugin installiert sein (Arduino IDE: Sketch → Include Library → Manage Libraries → nach LittleFS suchen und installieren)
+
+Für LittleFS muss das Dateisystem-Plugin installiert sein (Arduino IDE: Sketch -> Include Library -> Manage Libraries -> nach LittleFS suchen und installieren)
+
 Einen Discord-Server mit Webhook-URL
+
 MySQL-Datenbank mit HTTP-Endpoint zum Speichern der Messwerte (Eigenes Backend oder fertiger Webservice)
 
 3. Verdrahtung
+
 Anschlüsse am ESP32:
+
 Bauteil	ESP32 Pin
+
 DHT11 Data is GPIO 2
+
 SDA is GPIO 5
+
 SCL is GPIO 4
+
 DHT11 VCC	3.3V oder 5V (je nach DHT11)
+
 DHT11 GND	GND
 
 4. Einrichten der Entwicklungsumgebung
+
 ESP32 Boarddefinition in Arduino IDE hinzufügen (falls noch nicht geschehen):
-Datei → Voreinstellungen → Zusätzliche Boardverwalter-URLs:
+
+Datei -> Voreinstellungen -> Zusätzliche Boardverwalter-URLs:
+
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-Dann unter Werkzeuge → Board → Boardverwalter → ESP32 installieren.
+
+Dann unter Werkzeuge -> Board -> Boardverwalter -> ESP32 installieren.
+
 Alle benötigten Bibliotheken installieren:
-Menü Sketch → Bibliothek einbinden → Bibliotheken verwalten
+
+Menü Sketch -> Bibliothek einbinden -> Bibliotheken verwalten
+
 Suche nacheinander nach DHT, U8g2, NeoPixelBus, WiFiManager, Blynk, HTTPClient und installiere sie.
+
 LittleFS-Dateisystem Plugin installieren, damit du Dateien auf den ESP32 laden kannst.
 
 5. Vorbereitung der Dateien
+
 Passe die Werte an deine Umgebung an (Blynk Token, Server URL etc.)
 
 6. Hochladen des Programms
+
 Öffne den Arduino-Sketch mit deinem Code.
+
 Passe im Code bei Bedarf die Pin-Definitionen an, falls du andere Pins verwendest.
+
 Wähle das richtige ESP32-Board und den COM-Port aus.
+
 Kompiliere und lade den Sketch auf den ESP32.
+
 Öffne den Seriellen Monitor (115200 Baud) zur Überwachung.
 
 7. WLAN-Verbindung konfigurieren
+
 Beim ersten Start öffnet sich ein WLAN-Access-Point ESP32-Access-Point.
+
 Verbinde dich mit diesem Netzwerk über dein Smartphone oder PC.
+
 Ein Konfigurationsportal öffnet sich (Captive Portal).
+
 Wähle dein Heim-WLAN aus, gib das Passwort ein.
+
 ESP32 verbindet sich mit dem WLAN und startet neu.
 
+
 8. Funktionsweise
+
 Sensorwerte lesen: DHT11 misst Temperatur und Luftfeuchtigkeit.
+
 Anzeige: OLED zeigt die Werte mit grafischer Darstellung an.
+
 Status-LED: NeoPixel blinkt in verschiedenen Farben je nach Zustand (z.B. grün bei Verbindung, rot bei Fehler).
+
 Blynk: Sendet die Werte an dein Blynk-Dashboard für Fernüberwachung.
+
 HTTP Request: Überträgt die Messwerte als GET-Anfrage an deinen MySQL-Webserver.
+
 Discord-Webhook: Schickt bei bestimmten Ereignissen (z.B. Start, Fehler) eine Nachricht an deinen Discord-Kanal.
+
 Konfiguration: Werte aus config.txt werden beim Start geladen, um Token und Serverdaten bereitzustellen.
 
 ### Bilder und Schaltungen
@@ -101,12 +153,20 @@ Während der Arbeit gab es ein paar Probleme: Der Zugriff auf die Discord-API ü
 
 ## 6.  Quellen
 Volodymyr Shymanskyy et al., “Blynk IoT Platform - Blynk Library for ESP32,” GitHub. [online]. Available at: https://github.com/blynkkk/blynk-library. [Accessed 27 May 2025].
+
 Tzapu, “WiFiManager - Autoconnect WiFi with ESP8266/ESP32,” GitHub. [online]. Available at: https://github.com/tzapu/WiFiManager. [Accessed 27 May 2025].
+
 me-no-dev, “ESPAsyncWebServer Library for ESP32,” GitHub. [online]. Available at: https://github.com/me-no-dev/ESPAsyncWebServer. [Accessed 27 May 2025].
+
 Adafruit Industries, “Adafruit NeoPixel Library,” GitHub. [online]. Available at: https://github.com/adafruit/Adafruit_NeoPixel. [Accessed 27 May 2025].
+
 Adafruit Industries, “DHT Sensor Library for Arduino,” GitHub. [online]. Available at: https://github.com/adafruit/DHT-sensor-library. [Accessed 27 May 2025].
+
 olikraus, “U8g2 Library,” GitHub. [online]. Available at: https://github.com/olikraus/u8g2. [Accessed 27 May 2025].
+
 lorol, “LittleFS for ESP32,” GitHub. [online]. Available at: https://github.com/lorol/ESP32LittleFS. [Accessed 27 May 2025].
+
 Discord Inc., “Discord Webhook API Documentation,” Discord Developers. [online]. Available at: https://discord.com/developers/docs/resources/webhook. [Accessed 27 May 2025].
+
 NTP Pool Project Community, “NTP Pool Project,” pool.ntp.org. [online]. Available at: https://www.pool.ntp.org. [Accessed 27 May 2025].
 

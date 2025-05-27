@@ -65,7 +65,7 @@ vepuoxtGzi4CZ68zJpiq1UvSqTbFJjtbD4seiMHl
 #define DISCORD_TTS "false"
 
 /* Datenbank daten*/
-const char* HOST_NAME = "http://192.168.0.213";
+const char* HOST_NAME = "http://192.168.0.129";
 const char* PATH_NAME = "/insert_data.php";
 
 /* NTP server */

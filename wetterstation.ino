@@ -61,7 +61,7 @@ vepuoxtGzi4CZ68zJpiq1UvSqTbFJjtbD4seiMHl
 -----END CERTIFICATE-----
 )";
 
-#define DISCORD_WEBHOOK "https://discord.com/api/webhooks/1376593351079497728/L_QXPmTauqQif_z7Pxu181oMb4jqOgEQrZlkJlbtYc45d3_ri9H5JXj4PV8KyXPNoQng"
+#define DISCORD_WEBHOOK "https://discordapp.com/api/webhooks/1376966788071428216/vI0hSxlT6J2lW-blen0YiS6-8DqQlUpkCJB5eLLxA4m8Os9jojgYs5Pva1hj6yZO8HzD"
 #define DISCORD_TTS "false"
 
 /* Datenbank daten*/

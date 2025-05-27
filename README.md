@@ -35,8 +35,9 @@ Messdaten wurden am OLED angezeigt. Zusätzlich wurden Status-LEDs (RGB) zur Vis
 
 Die serielle Konsole war ein wichtiges Werkzeug, um Fehler zu erkennen (z. B. keine Verbindung zum Server, fehlerhafte Sensoren). Auch LED-Farben halfen beim schnellen Erkennen von Problemen ohne angeschlossenen PC.
 
-## 4.   Arbeitsschritt                                                                    
-1. **Benötigte Hardware**
+## 4.   Arbeitsschritte
+
+### 1. Benötigte Hardware
 
 Breadboard
 
@@ -52,7 +53,7 @@ Verbindungskabel (Jumper)
 
 USB-Kabel zum Programmieren des ESP32
 
-2. **Benötigte Software und Bibliotheken**
+### Benötigte Software und Bibliotheken
 
 Arduino IDE oder eine andere Entwicklungsumgebung für ESP32
 
@@ -80,7 +81,7 @@ Einen Discord-Server mit Webhook-URL
 
 SQL-Datenbank mit HTTP-Endpoint zum Speichern der Messwerte (Eigenes Backend oder fertiger Webservice)
 
-3. **Verdrahtung**
+### Verdrahtung
 
 Anschlüsse am ESP32:
 
@@ -96,7 +97,7 @@ DHT11 VCC	3.3V oder 5V (je nach DHT11)
 
 DHT11 GND	GND
 
-4. **Einrichten der Entwicklungsumgebung**
+### Einrichten der Entwicklungsumgebung
 
 ESP32 Boarddefinition in Arduino IDE hinzufügen (falls noch nicht geschehen):
 
@@ -114,11 +115,11 @@ Suche nacheinander nach DHT, U8g2, NeoPixelBus, WiFiManager, Blynk, HTTPClient u
 
 LittleFS-Dateisystem Plugin installieren, damit du Dateien auf den ESP32 laden kannst.
 
-5. **Vorbereitung der Dateien**
+### Vorbereitung der Dateien
 
 Passe die Werte an deine Umgebung an (Blynk Token, Server URL etc.)
 
-6. **Hochladen des Programms**
+### Hochladen des Programms
 
 Öffne den Arduino-Sketch mit deinem Code.
 
@@ -130,7 +131,7 @@ Kompiliere und lade den Sketch auf den ESP32.
 
 Öffne den Seriellen Monitor (115200 Baud) zur Überwachung.
 
-7. **WLAN-Verbindung konfigurieren**
+### WLAN-Verbindung konfigurieren
 
 Beim ersten Start öffnet sich ein WLAN-Access-Point ESP32-Access-Point.
 
@@ -142,7 +143,7 @@ Wähle dein Heim-WLAN aus, gib das Passwort ein.
 
 ESP32 verbindet sich mit dem WLAN und startet neu.
 
-8. **Funktionsweise**
+### Funktionsweise
 
 Sensorwerte lesen: DHT11 misst Temperatur und Luftfeuchtigkeit.
 

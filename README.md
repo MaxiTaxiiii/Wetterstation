@@ -37,7 +37,7 @@ Die serielle Konsole war ein wichtiges Werkzeug, um Fehler zu erkennen (z. B. 
 
 ## 4.   Arbeitsschritte
 
-### 1. Benötigte Hardware
+### Benötigte Hardware
 
 Breadboard
 

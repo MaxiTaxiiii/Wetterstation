@@ -11,20 +11,20 @@ Im Projekt wurde eine Wetterstation umgesetzt, die Messwerte wie Temperatur, Luf
 ## 3. Theorie                                                                        
 Für die Umsetzung der Wetterstation waren mehrere technische Kompetenzen nötig, die im Unterricht oder im Selbststudium erarbeitet wurden:
 ESP32
-Grundkenntnisse über den Mikrocontroller waren erforderlich – z. B. Pinzuweisungen, Spannungslimits, Initialisierung von Sensoren, Nutzung der GPIOs und die Integration von Bibliotheken für Sensoren und das Display.
+Grundkenntnisse über den Mikrocontroller waren erforderlich - z. B. Pinzuweisungen, Spannungslimits, Initialisierung von Sensoren, Nutzung der GPIOs und die Integration von Bibliotheken für Sensoren und das Display.
 Netzwerk
 Der ESP32 wurde über WLAN mit dem Internet verbunden. Es wurden HTTP-GET/POST-Anfragen verwendet, um Messwerte an einen Webserver zu senden oder Zeitdaten über NTP zu holen. Kenntnisse über IP-Adressen, Ports und Protokolle waren dafür notwendig.
 Web/API
-Um die Daten online verfügbar zu machen, wurden APIs genutzt – z. B. die Blynk-Cloud oder Discord-Webhooks. Die Kommunikation lief dabei über das JSON-Format, welches geparst und erstellt werden musste.
+Um die Daten online verfügbar zu machen, wurden APIs genutzt - z. B. die Blynk-Cloud oder Discord-Webhooks. Die Kommunikation lief dabei über das JSON-Format, welches geparst und erstellt werden musste.
 Dateisystem (LittleFS)
 Um Konfigurationen dauerhaft zu speichern (z. B. WLAN-Zugangsdaten oder Blynk-Token), wurde das interne Dateisystem des ESP32 verwendet. Mit LittleFS konnten Dateien gelesen und geschrieben werden.
 
 Display & LEDs
-Messdaten wurden am OLED angezeigt. Zusätzlich wurden Status-LEDs (RGB) zur Visualisierung von Problemen oder Warnungen verwendet – z. B. rote LED bei Überhitzung oder blinkend blau bei WLAN-Ausfall.
+Messdaten wurden am OLED angezeigt. Zusätzlich wurden Status-LEDs (RGB) zur Visualisierung von Problemen oder Warnungen verwendet - z. B. rote LED bei Überhitzung oder blinkend blau bei WLAN-Ausfall.
 Debugging
 Die serielle Konsole war ein wichtiges Werkzeug, um Fehler zu erkennen (z. B. keine Verbindung zum Server, fehlerhafte Sensoren). Auch LED-Farben halfen beim schnellen Erkennen von Problemen ohne angeschlossenen PC.
 ## 4.   Arbeitsschritt                                                                    
-1. Benötigte Hardware
+1. **Benötigte Hardware**
 
 ESP32 Development Board
 
@@ -36,7 +36,7 @@ Verbindungskabel (Jumper)
 
 USB-Kabel zum Programmieren des ESP32
 
-2. Benötigte Software und Bibliotheken
+2. **Benötigte Software und Bibliotheken**
 
 Arduino IDE oder eine andere Entwicklungsumgebung für ESP32
 
@@ -64,7 +64,7 @@ Einen Discord-Server mit Webhook-URL
 
 MySQL-Datenbank mit HTTP-Endpoint zum Speichern der Messwerte (Eigenes Backend oder fertiger Webservice)
 
-3. Verdrahtung
+3. **Verdrahtung**
 
 Anschlüsse am ESP32:
 
@@ -80,7 +80,7 @@ DHT11 VCC	3.3V oder 5V (je nach DHT11)
 
 DHT11 GND	GND
 
-4. Einrichten der Entwicklungsumgebung
+4. **Einrichten der Entwicklungsumgebung**
 
 ESP32 Boarddefinition in Arduino IDE hinzufügen (falls noch nicht geschehen):
 
@@ -98,11 +98,11 @@ Suche nacheinander nach DHT, U8g2, NeoPixelBus, WiFiManager, Blynk, HTTPClient u
 
 LittleFS-Dateisystem Plugin installieren, damit du Dateien auf den ESP32 laden kannst.
 
-5. Vorbereitung der Dateien
+5. **Vorbereitung der Dateien**
 
 Passe die Werte an deine Umgebung an (Blynk Token, Server URL etc.)
 
-6. Hochladen des Programms
+6. **Hochladen des Programms**
 
 Öffne den Arduino-Sketch mit deinem Code.
 
@@ -114,7 +114,7 @@ Kompiliere und lade den Sketch auf den ESP32.
 
 Öffne den Seriellen Monitor (115200 Baud) zur Überwachung.
 
-7. WLAN-Verbindung konfigurieren
+7. **WLAN-Verbindung konfigurieren**
 
 Beim ersten Start öffnet sich ein WLAN-Access-Point ESP32-Access-Point.
 
@@ -127,7 +127,7 @@ Wähle dein Heim-WLAN aus, gib das Passwort ein.
 ESP32 verbindet sich mit dem WLAN und startet neu.
 
 
-8. Funktionsweise
+8. **Funktionsweise**
 
 Sensorwerte lesen: DHT11 misst Temperatur und Luftfeuchtigkeit.
 
